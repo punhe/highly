@@ -103,10 +103,8 @@
                                     <select onchange="handleFilter(this)">
                                         <option value="-1">Status</option>
                                         <option value="4">All...</option>
-                                        <option value="0">Reject</option>
-                                        <option value="1">To Do</option>
-                                        <option value="2">In Progress</option>
-                                        <option value="3">Done</option>
+                                        <option value="0">Ceipt</option>
+                                        <option value="1">Payment</option>
                                     </select>
                                 </th>
                                 <th>Created By</th>

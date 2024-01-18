@@ -74,7 +74,7 @@
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-7">
-                                <h2>Todo <b>Management</b></h2>
+                                <h2>Receipt <b>Management</b></h2>
                             </div>
                             <div class="col-sm-5">
                                 <% if (userRole == 2) {%>
@@ -142,10 +142,8 @@
                                     <select onchange="handleFilter(this)">
                                         <option value="-1">Status</option>
                                         <option value="4">All...</option>
-                                        <option value="0">Reject</option>
-                                        <option value="1">To Do</option>
-                                        <option value="2">In Progress</option>
-                                        <option value="3">Done</option>
+                                        <option value="0">Ceipt</option>
+                                        <option value="1">Payment</option>
                                     </select>
                                 </th>
                                 <% if (userRole == 2) {%>

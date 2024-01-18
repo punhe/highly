@@ -47,14 +47,14 @@
                         <form action="./add" method="POST" id="form-add">
                             <div class="d-flex align-items-center mb-3 pb-1">
                                 <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                                <span class="h1 fw-bold mb-0">Add to do list</span>
+                                <span class="h1 fw-bold mb-0">Add Bill</span>
                             </div>
 
                             <h6 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px; color: red; text-align: left;">${msg}</h6>
                             <!-- Name -->
                             <div class="form-group mb-4">
                                 <label class="form-label" for="name">Name</label>
-                                <input id="name" class="form-control form-control-lg" placeholder="Enter Name of the job"
+                                <input id="name" class="form-control form-control-lg" placeholder="Enter Name Bill"
                                        name="name" rules="required|min:6" />
                                 <span class="form-message" style="color: red"></span>
                             </div>
@@ -62,7 +62,7 @@
                             <!-- Description -->
                             <div class="form-group mb-4">
                                 <label class="form-label" for="description">Description</label>
-                                <input id="description" class="form-control" placeholder="Enter description of the job"
+                                <input id="description" class="form-control" placeholder="Enter description of reason"
                                        name="description"/>
                             </div>
 
@@ -70,10 +70,9 @@
                             <div class="form-group mb-4">
                                 <label class="form-label" for="status">Status</label>
                                 <select id="status" class="form-select" name="status" rules="required">
-                                	<option value="1">To Do</option>
-                                    <option value="0">Reject</option>
-                                    <option value="2">In Progress</option>
-                                    <option value="3">Done</option>
+                                	<option value="1">receipt</option>
+                                    <option value="0">Payment</option>
+
                                 </select>
                                 <span class="form-message" style="color: red"></span>
                             </div>
