@@ -23,7 +23,7 @@
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="image/carousel-image1.jpg" class="d-block w-100" alt="Image 1">
+                    <img src="#" class="d-block w-100" alt="Image 1">
                 </div>
             </div>
         </div>
@@ -32,21 +32,21 @@
         <div class="container mt-4">
             <div class="card-deck">
                 <div class="card">
-                    <img src="image/feature-image1.jpg" class="card-img-top" alt="Feature 1">
+                    <img src="#" class="card-img-top" alt="Feature 1">
                     <div class="card-body">
                         <h5 class="card-title">Easy Task Management</h5>
                         <p class="card-text">Effortlessly manage your tasks and stay organized with TaskList.</p>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="image/feature-image2.png" class="card-img-top" alt="Feature 2">
+                    <img src="#" class="card-img-top" alt="Feature 2">
                     <div class="card-body">
                         <h5 class="card-title">Customizable Categories</h5>
                         <p class="card-text">Create and customize categories to organize your tasks the way you want.</p>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="image/feature-image3.jpg" class="card-img-top" alt="Feature 3">
+                    <img src="#" class="card-img-top" alt="Feature 3">
                     <div class="card-body">
                         <h5 class="card-title">Reminder Notifications</h5>
                         <p class="card-text">Receive timely reminders to help you stay on top of your tasks.</p>
@@ -90,7 +90,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-md-6"> <div class="intro-section"> <h2>Introducing TaskList</h2> <p>Welcome to TaskList, the ultimate solution for simplifying and optimizing your task management process. With TaskList, you can effortlessly organize and track your daily tasks, ensuring maximum productivity and efficiency.</p> <p>Our user-friendly interface and intuitive features make it easy to stay organized and focused. Create personalized categories to tailor your task organization to your unique needs and preferences.</p> <p>Stay on top of your tasks with our powerful reminder notifications. TaskList will ensure you never miss a deadline and help you maintain a well-structured workflow.</p> <p>Experience the convenience and effectiveness of TaskList today. Start managing your tasks with ease, and unlock your full potential for productivity and success.</p> </div> </div>
+                <div class="col-md-6"> <div class="intro-section"> <h2>Introducing Receipt/Payment App</h2>  </div> </div>
             </div>
         </div>
         <hr/>

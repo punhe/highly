@@ -26,6 +26,7 @@ public class LoadController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String index = request.getParameter("page");
+		int sumMoney= 0;
 		if (index == null) {
 			index = "1";
 		}
@@ -37,6 +38,15 @@ public class LoadController extends HttpServlet {
 				endP++;
 			}
 			List<ToDoEntity> list = toDoService.getAllTodoLimit(page);
+			for(ToDoEntity todo : list) {
+				if(todo.getStatus() == 0){
+					sumMoney += todo.getPriority();
+				}
+				else{
+					sumMoney -= todo.getPriority();
+				}
+			}
+			request.setAttribute("sumMoney", sumMoney);
 			request.setAttribute("list", list);
 			request.setAttribute("endP", endP);
 			request.setAttribute("tag", page);

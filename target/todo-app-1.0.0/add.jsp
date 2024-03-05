@@ -47,7 +47,7 @@
                         <form action="./add" method="POST" id="form-add">
                             <div class="d-flex align-items-center mb-3 pb-1">
                                 <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                                <span class="h1 fw-bold mb-0">Add Bill</span>
+                                <span class="h4 fw-bold mb-0">Manament Receipt/Payment</span>
                             </div>
 
                             <h6 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px; color: red; text-align: left;">${msg}</h6>
@@ -70,21 +70,20 @@
                             <div class="form-group mb-4">
                                 <label class="form-label" for="status">Status</label>
                                 <select id="status" class="form-select" name="status" rules="required">
-                                	<option value="1">receipt</option>
-                                    <option value="0">Payment</option>
+                                	<option value="0">receipt</option>
+                                    <option value="1">Payment</option>
 
                                 </select>
                                 <span class="form-message" style="color: red"></span>
                             </div>
 
                             <!-- Priority -->
+
+
                             <div class="form-group mb-4">
-                                <label class="form-label" for="priority">Priority</label>
-                                <select id="priority" class="form-select" name="priority" rules="required">
-                                    <option value="0">Medium</option>
-                                    <option value="1">High</option>
-                                </select>
-                                <span class="form-message" style="color: red"></span>
+                                <label class="form-label" for="priority">Money</label>
+                                <input id="priority" class="form-control" placeholder="Enter number of money"
+                                       name="priority"/>
                             </div>
 
                             <!-- due -->
@@ -98,7 +97,7 @@
                             <input value="<%=user%>" name="created" type="hidden"/>
                             <% } else if (userRole == 2) { %>
                             <div class="form-group mb-4">
-                                <label class="form-label" for="createdBy">Assign Task to User</label>
+                                <label class="form-label" for="createdBy">Choose User</label>
                                 <select id="createdBy" class="form-select" name="createdBy" rules="required">
                                     <option value="-1">Choose a user....</option>
                                     <% for (UserEntity users : list) {%>

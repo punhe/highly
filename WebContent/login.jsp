@@ -71,7 +71,7 @@
                                 <!--Link tới JSP đăng ký hoặc trở về trang home-->
                                 <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="register.jsp"
                                                                                                   class="link-danger">Register</a></p>
-                                <p class="small fw-bold mt-2 pt-1 mb-0">Home page?<a href="index.jsp"
+                                <p class="small fw-bold mt-2 pt-1 mb-0">Home page?<a href="admin-filter.jsp"
                                                                                      class="link-danger"> Go back</a></p>
                             </div>
 

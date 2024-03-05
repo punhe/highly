@@ -45,10 +45,11 @@
                 <a class="nav-link"
                    <%
                        if (userRole == 2) {
+                           int status = 0;
                    %>
-                   href="./load-data"
+                   href="./load-data?role=<%= u.getRole() %>"
                    <%  } else {%>
-                   href="./load-data-user"
+                   href="./load-data-user?role=<%= u.getRole() %>">
                    <% } %>
                    ><h6 style="margin-right: 1150px">Manager</h6></a>
             </li>

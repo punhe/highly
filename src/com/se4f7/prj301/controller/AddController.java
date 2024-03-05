@@ -74,7 +74,7 @@ public class AddController extends HttpServlet {
 		} else {
 			if (created != null) {
 				String emailSubject = "New Task Assigned";
-				String emailMessage = "Dear User, a new task has been assigned to you. Please log in to our website for more details.";
+				String emailMessage = "Dear User, a new Bill has been assigned to you. Please log in to our website for more details.";
 				MailMessage.sendMessage(created, emailSubject, emailMessage);
 			}
 			String createdBy = (created != null) ? created : createdByS;
@@ -87,7 +87,7 @@ public class AddController extends HttpServlet {
 					response.sendRedirect("./load-data-user");
 				}
 			} else {
-				request.setAttribute("msg", "Don't added task!!");
+				request.setAttribute("msg", "Don't added Bill!!");
 				request.getRequestDispatcher("add.jsp").forward(request, response);
 			}
 		}

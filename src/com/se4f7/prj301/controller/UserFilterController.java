@@ -27,7 +27,6 @@ public class UserFilterController extends HttpServlet {
 			throws ServletException, IOException {
 		String statusString = request.getParameter("status");
 		int status = Integer.parseInt(statusString);
-
 		if (status == 0) {
 			response.sendRedirect("./user");
 		} else {

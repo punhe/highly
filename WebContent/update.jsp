@@ -49,7 +49,7 @@
                         <form action="./edit?id=<%=toDo.getId()%>" method="POST" id="form-update">
                             <div class="d-flex align-items-center mb-3 pb-1">
                                 <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                                <span class="h1 fw-bold mb-0">Update to do list</span>
+                                <span class="h1 fw-bold mb-0">Update</span>
                             </div>
 
                             <h6 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px; color: red; text-align: left;">${msg}</h6>
@@ -61,7 +61,7 @@
                             <!-- Name -->
                             <div class="form-group mb-4">
                                 <label class="form-label" for="name">Name</label>
-                                <input id="name" class="form-control form-control-lg" placeholder="Enter name of the job"
+                                <input id="name" class="form-control form-control-lg" placeholder="Enter name"
                                        value="<%=toDo.getName()%>" name="name" rules="required|min:6" />
                                 <span class="form-message" style="color: red"></span>
                             </div>
@@ -69,7 +69,7 @@
                             <!-- Description -->
                             <div class="form-group mb-4">
                                 <label class="form-label" for="description">Description</label>
-                                <input id="description" class="form-control" placeholder="Enter description of the job"
+                                <input id="description" class="form-control" placeholder="Enter description"
                                        value="<%=toDo.getDescription()%>" name="description"/>
                                 <span class="form-message" style="color: red"></span>
                             </div>
@@ -87,26 +87,23 @@
                             <div class="form-group mb-4">
                                 <label class="form-label" for="status">Status</label>
                                 <select id="status" class="form-select" name="status" rules="required">
-                                    <option value="0" <%=toDo.getStatus() == 0 ? "selected = \"true\"" : ""%>>Reject</option>
-                                    <option value="1" <%=toDo.getStatus() == 1 ? "selected = \"true\"" : ""%>>To Do</option>
-                                    <option value="2" <%=toDo.getStatus() == 2 ? "selected = \"true\"" : ""%>>In Progress</option>
-                                    <option value="3" <%=toDo.getStatus() == 3 ? "selected = \"true\"" : ""%>>Done</option>
+                                    <option value="0" <%=toDo.getStatus() == 0 ? "selected = \"true\"" : ""%>>Receipt</option>
+                                    <option value="1" <%=toDo.getStatus() == 1 ? "selected = \"true\"" : ""%>>Payment</option>
                                 </select>
                                 <span class="form-message" style="color: red"></span>
                             </div>
 
+
                             <div class="form-group mb-4">
-                                <label class="form-label" for="priority">Priority</label>
-                                <select id="priority" class="form-select" name="priority" rules="required">
-                                    <option value="0" <%=toDo.getPriority() == 0 ? "selected = \"true\"" : ""%>>Medium</option>
-                                    <option value="1" <%=toDo.getPriority() == 1 ? "selected = \"true\"" : ""%>>High</option>
-                                </select>
+                                <label class="form-label" for="priority">Money</label>
+                                <input id="priority" class="form-control" placeholder="Enter Money"
+                                       value="<%=toDo.getPriority()%>" name="priority"/>
                                 <span class="form-message" style="color: red"></span>
                             </div>
 
                             <!-- due -->
                             <div class="form-group mb-4">
-                                <label class="form-label" for="due">Due Date</label>
+                                <label class="form-label" for="due">Date Created</label>
                                 <input type="date" id="due" class="form-control form-control-lg" name="due" value="<%=toDo.getDue()%>" rules="required" />
                                 <span class="form-message" style="color: red"></span>
                             </div>

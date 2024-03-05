@@ -33,6 +33,7 @@
 
         List<ToDoEntity> list = (List<ToDoEntity>) request.getAttribute("list");
         List<ToDoEntity> listU = (List<ToDoEntity>) request.getAttribute("listU");
+        int sumMoney = (int) request.getAttribute("sumMoney");
         AuthService authService = new AuthServiceImpl();
         UserResponseDto u = authService.getUserInfo(user);
         int userRole = u.getRole();
@@ -40,6 +41,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="index.jsp" style="color: black"><i class="fa fa-home" aria-hidden="true"></i>&nbsp; Home</a>
+            <a href="#" class="btn btn-primary"><i class="fas fa-dollar-sign"></i><%=sumMoney%></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -141,15 +143,14 @@
                                 <th class="status-filter">
                                     <select onchange="handleFilter(this)">
                                         <option value="-1">Status</option>
-                                        <option value="4">All...</option>
-                                        <option value="0">Ceipt</option>
+                                        <option value="0">Receipt</option>
                                         <option value="1">Payment</option>
                                     </select>
                                 </th>
                                 <% if (userRole == 2) {%>
                                 <th>Created By</th>
                                     <% }%>
-                                <th>Updated By</th>
+                                <th>Money</th>
                                     <% if (userRole == 2) {%>
                                 <th>Created Date</th>
                                     <% }%>
@@ -157,15 +158,12 @@
                                     <% if (userRole == 1) {%>
                                 <th class="status-filter">
                                     <select  onchange="handleFilterPriority(this)">
-                                        <option value="-1">Priority</option>
-                                        <option value="2">All...</option>
-                                        <option value="1">High</option>
-                                        <option value="0">Medium</option>
+                                        <option value="2">Money</option>
                                     </select>
                                 </th>
                                 <% }%>
                                 <th class="status-filter">
-                                    <select  onchange="handleFilterDue(this)">
+                                    <select onchange="handleFilterDue(this)">
                                         <option value="-1">Due</option>
                                         <option value="all">All...</option>
                                         <option value="due">Overdue</option>
@@ -195,7 +193,7 @@
                                 <% }%>
 
                                 <td >
-                                    <%=toDo.getUpdatedBy()%>
+                                    <%=toDo.getPriority()%>
                                 </td>
 
                                 <% if (userRole == 2) {%>
@@ -299,24 +297,18 @@
                 var statusTag = $("#status<%= toDoS.getId()%>");
                 var status = <%= toDoS.getStatus()%>;
 
-                var priorityTag = $("#priority<%= toDoS.getId()%>");
+                var priorityTag = $("#Money<%= toDoS.getId()%>");
                 var priority = <%= toDoS.getPriority()%>;
 
-                var dueTag = $("#due<%= toDoS.getId()%>");
+                var dueTag = $("#Date Created<%= toDoS.getId()%>");
                 var dueDate = new Date('<%= toDoS.getDue()%>');
 
                 switch (status) {
                     case 0:
-                        statusTag.text("Reject").addClass('badge bg-danger rounded-pill d-inline text-light');
+                        statusTag.text("Receipt").addClass('badge bg-danger rounded-pill d-inline text-light');
                         break;
                     case 1:
-                        statusTag.text("To Do").addClass('badge bg-warning rounded-pill d-inline text-light');
-                        break;
-                    case 2:
-                        statusTag.text("In Progress").addClass('badge bg-primary rounded-pill d-inline text-light');
-                        break;
-                    case 3:
-                        statusTag.text("Done").addClass('badge bg-success rounded-pill d-inline text-light');
+                        statusTag.text("Payment").addClass('badge bg-warning rounded-pill d-inline text-light');
                         break;
                 }
 
@@ -339,7 +331,7 @@
                     dueTag.text("Due: " + formatDate(dueDate)).addClass('text-dark');
                 }
 
-            <% }%>
+                <% }%>
 
             });
         </script>

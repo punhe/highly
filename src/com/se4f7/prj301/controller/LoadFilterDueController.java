@@ -30,6 +30,7 @@ public class LoadFilterDueController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String due = request.getParameter("due");
+		int sumMoney= 0;
 		String userName = null;
 		Cookie[] cookies = request.getCookies();
 		if (cookies != null) {
@@ -43,6 +44,16 @@ public class LoadFilterDueController extends HttpServlet {
 		AuthService authService = new AuthServiceImpl();
 		UserResponseDto u = authService.getUserInfo(userName);
 		int userRole = u.getRole();
+		List<ToDoEntity> list = toDoService.getAllTodoLimit(1);
+		for(ToDoEntity todo : list) {
+			if(todo.getStatus() == 0){
+				sumMoney += todo.getPriority();
+			}
+			else{
+				sumMoney -= todo.getPriority();
+			}
+		}
+
 
 		if (due.equalsIgnoreCase("all")) {
 			if (userRole == 2) {
@@ -52,9 +63,10 @@ public class LoadFilterDueController extends HttpServlet {
 			}
 		} else {
 			try {
-				List<ToDoEntity> list = toDoService.getWorkByDue(due);
+				request.setAttribute("sumMoney", sumMoney);
+				List<ToDoEntity> listt = toDoService.getWorkByDue(due);
 				List<ToDoEntity> listU = toDoService.getWorkByDue(due, userName);
-				request.setAttribute("list", list);
+				request.setAttribute("list", listt);
 				request.setAttribute("listU", listU);
 				request.getRequestDispatcher("admin-filter.jsp").forward(request, response);
 			} catch (Exception e) {

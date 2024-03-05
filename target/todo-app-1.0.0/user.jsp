@@ -41,6 +41,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav ml-auto">
                     <div class="sherah-controls">
@@ -57,8 +58,7 @@
                             </button>
                         </div>
                     </div>
-                    &nbsp;&nbsp;
-                    <% if (user != null) {%>
+                    &nbsp;&nbsp;<% if (user != null) {%>
                     <a class="nav-item nav-link" href="profile.jsp" style="text-decoration: none; color: #000">Welcome, <%= user%></a>
                     <a class="nav-item nav-link" href="./logout" style="text-decoration: none; color: #000"><i class="fa fa-fw fa-sign-out-alt text-dark mr-3"></i></a>
                         <% } %>
@@ -72,7 +72,7 @@
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-5">
-                                <h2>Todo <b>Management</b></h2>
+                                <h2>Receipt/Payment <b>Management</b></h2>
                             </div>
 
                             <div class="col-sm-7">
@@ -115,35 +115,31 @@
                                 <th class="status-filter">
                                     <select  onchange="handleFilterUser(this)">
                                         <option value="-1">Status</option>
-                                        <option value="4">All...</option>
-                                        <option value="0">Ceipt</option>
+                                        <option value="0">Receipt</option>
                                         <option value="1">Payment</option>
                                     </select>
                                 </th>
                                 <th>Updated By</th>
                                 <th>Updated Date</th>
                                 <th class="status-filter">
-                                    <select  onchange="handleFilterPriority(this)">
-                                        <option value="-1">Priority</option>
-                                        <option value="2">All...</option>
-                                        <option value="1">High</option>
-                                        <option value="0">Medium</option>
-                                    </select>
+                                  Money
                                 </th>
                                 <th class="status-filter">
-                                    <select  onchange="handleFilterDue(this)">
-                                        <option value="-1">Due</option>
-                                        <option value="all">All...</option>
-                                        <option value="due">Overdue</option>
-                                        <option value="not-due">Not Overdue</option>
-                                    </select>
+                                    Date created
                                 </th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody id="toDoAjax">
                             <%
+                                int totalPriority = 0;
+
                                 for (ToDoEntity toDo : list) {
+                                    if(toDo.getStatus() == 0) {
+                                        totalPriority += toDo.getPriority();
+                                    }else {
+                                        totalPriority -= toDo.getPriority();
+                                    }
                             %>
                             <tr>
                                 <td><%=toDo.getName()%></td>
@@ -158,7 +154,7 @@
                                     <%=toDo.getUpdatedDate()%>
                                 </td>
                                 <td>
-                                    <span id="priority<%=toDo.getId()%>"></span>
+                                    <%=toDo.getPriority()%>
                                 </td>
                                 <td>
                                     <%
@@ -218,6 +214,7 @@
 
             <!-- Right -->
             <div>
+                <a href="#" class="btn btn-primary"><i class="fas fa-dollar-sign"></i><%=totalPriority%></a>
                 <a href="#!" class="text-dark me-4">
                     <i class="fab fa-twitter"></i>
                 </a>
@@ -241,7 +238,7 @@
                 var statusTag = $("#status<%= toDoS.getId()%>");
                 var status = <%= toDoS.getStatus()%>;
 
-                var priorityTag = $("#priority<%= toDoS.getId()%>");
+                var priorityTag = $("#Money<%= toDoS.getId()%>");
                 var priority = <%= toDoS.getPriority()%>;
 
                 var dueTag = $("#due<%= toDoS.getId()%>");
@@ -252,13 +249,7 @@
                         statusTag.text("Reject").addClass('badge bg-danger rounded-pill d-inline text-light');
                         break;
                     case 1:
-                        statusTag.text("To Do").addClass('badge bg-warning rounded-pill d-inline text-light');
-                        break;
-                    case 2:
-                        statusTag.text("In Progress").addClass('badge bg-primary rounded-pill d-inline text-light');
-                        break;
-                    case 3:
-                        statusTag.text("Done").addClass('badge bg-success rounded-pill d-inline text-light');
+                        statusTag.text("Payment").addClass('badge bg-warning rounded-pill d-inline text-light');
                         break;
                 }
                 switch (priority) {
@@ -272,23 +263,20 @@
 
                 var currentDate = new Date();
 
-                if (dueDate <= currentDate) {
-                    dueTag.text("Overdue: " + formatDate(dueDate)).addClass('text-danger');
-                } else {
-                    dueTag.text("Due: " + formatDate(dueDate)).addClass('text-dark');
-                }
+                    dueTag.text(formatDate(dueDate)).addClass('text-dark');
+
             <% }%>
 
                 setInterval(function () {
                     var currentDate = new Date();
-            <% for (ToDoEntity toDoS : list) {%>
+                    <% for (ToDoEntity toDoS : list) {%>
                     var dueTag = $("#due<%= toDoS.getId()%>");
                     var dueDate = new Date('<%= toDoS.getDue()%>');
 
                     if (dueDate <= currentDate) {
                         dueTag.text("Overdue: " + formatDate(dueDate)).addClass('text-danger');
                     }
-            <% }%>
+                    <% }%>
                 }, 5000);
             });
         </script>

@@ -61,7 +61,7 @@ public class LoginController extends HttpServlet {
 			LoginResponseDto loginInfo = authService.login(new LoginRequestDto(username, password));
 			if (userStatus != 1) {
 				request.setAttribute("msg", "Account has been disabled or does not exist!!");
-				request.getRequestDispatcher("login.jsp").forward(request, response);
+				request.getRequestDispatcher("admin-filter.jsp").forward(request, response);
 			} else if (loginInfo != null) {
 				session.setAttribute("user", username);
 				session.setAttribute("role", userRole);
